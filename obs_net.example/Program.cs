@@ -8,7 +8,17 @@ namespace obs_net.example {
 			if(obs_initialized()) {
 				throw new Exception("error: obs already initialized");
 			}
-			base_set_log_handler(new log_handler_t(log_handler), IntPtr.Zero);
+
+			base_set_log_handler(new log_handler_t((lvl, msg, args, p) => {
+				using (va_list arglist = new va_list(args))
+				{
+					object[] objs = arglist.GetObjectsByFormat(msg);
+					string formattedMsg = Printf.sprintf(msg, objs);
+
+					Console.WriteLine(((LogErrorLevel)lvl).ToString() + ": " + formattedMsg);
+				}
+			}), IntPtr.Zero);
+
 			Console.WriteLine("libobs version: " + obs_get_version_string());
 			if(!obs_startup("en-US", null, IntPtr.Zero)) {
 				throw new Exception("error on libobs startup");
