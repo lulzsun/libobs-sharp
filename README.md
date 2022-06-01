@@ -38,5 +38,7 @@ Using the `obs_net.example` project as an example, this is how the libobs files 
 
 ## Special thanks to
 [GoaLitiuM/libobs-sharp](https://github.com/GoaLitiuM/libobs-sharp) used some snippets and as reference
+
 [FFFFFFFXXXXXXX/libobs-recorder](https://github.com/FFFFFFFXXXXXXX/libobs-recorder) used as learning reference
+
 [stream-labs/obs-studio-node](https://github.com/stream-labs/obs-studio-node) used as learning reference
