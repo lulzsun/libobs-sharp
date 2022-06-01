@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "obs-net": {
+      "commandName": "Project"
+    }
+  }
+}
