@@ -1,4 +1,4 @@
-# obs_net
+# libobs.NET
 This is a C# wrapper for libobs. It's intention is to provide straightforward API for building around the libobs library, creating applications on the .NET platform.
 
 This library is currently built around .NET 5 and LibObs 27.5.32.
@@ -35,6 +35,11 @@ Using the `obs_net.example` project as an example, this is how the libobs files 
         - obs.dll & ~dependencies/.dlls, etc. files~
         - obs_net.example.exe
 ```
+
+## TODO
+- abstraction 
+- type safety
+- gc / memory management
 
 ## Special thanks to
 [GoaLitiuM/libobs-sharp](https://github.com/GoaLitiuM/libobs-sharp) used some snippets and as reference
