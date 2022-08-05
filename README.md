@@ -4,9 +4,11 @@ This is a C# wrapper for libobs. It's intention is to provide straightforward AP
 This library is currently built around .NET 5 and LibObs 27.5.32.
 
 ## Development Notes
-Currently supports only a very limited amount of features mainly for the purpose of recording/encoding. It is mainly built for the use of my personal project, [RePlays](https://github.com/lulzsun/RePlays).
+1. Currently supports only a very limited amount of features mainly for the purpose of recording/encoding. It is mainly built for the use of my personal project, [RePlays](https://github.com/lulzsun/RePlays).
 
-For docs, you can reference from [obsproject's documentation](https://obsproject.com/docs/index.html). Naming conventions of methods/classes/etc. are 1:1 with the docs, for ease of use and straightforward library development.
+2. Do not use this unless you understand the consequences of the API being directly exposed, (at the time of writing, there are no safety wrapper methods). You should only use this if you can handle the issues related to this.
+
+3. For docs, you can reference from [obsproject's documentation](https://obsproject.com/docs/index.html). Naming conventions of methods/classes/etc. are 1:1 with the docs (because of note #2), for ease of use and straightforward library development.
 
 Missing features that you would like to see? Submit an issue ticket!
 
