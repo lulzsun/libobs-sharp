@@ -5,6 +5,9 @@ namespace obs_net{
     using obs_output_t = IntPtr;
     using obs_data_t = IntPtr;
     using signal_handler_t = IntPtr;
+    using video_t = IntPtr;
+    using audio_t = IntPtr;
+    using size_t = UIntPtr;
 
     public partial class Obs {
         [DllImport(importLibrary, CallingConvention = importCall, CharSet = importCharSet)]
@@ -17,8 +20,20 @@ namespace obs_net{
         public static extern void obs_output_release(obs_output_t output);
 
         [DllImport(importLibrary, CallingConvention = importCall)]
-        [return: MarshalAs(UnmanagedType.Bool)]
+        [return: MarshalAs(UnmanagedType.I1)]
+        public static extern bool obs_output_active(obs_output_t output);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool obs_output_start(obs_output_t output);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        [return: MarshalAs(UnmanagedType.I1)]
+        public static extern bool obs_output_can_begin_data_capture(obs_output_t output, uint flags);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        [return: MarshalAs(UnmanagedType.I1)]
+        public static extern bool obs_output_initialize_encoders(obs_output_t output, uint flags);
 
         /// <summary>
         /// <para>https://obsproject.com/docs/reference-outputs.html?highlight=obs_output_stop#c.obs_output_stop</para>
@@ -56,6 +71,12 @@ namespace obs_net{
         /// <param name="output"></param>
         /// <param name="mixers"></param>
         [DllImport(importLibrary, CallingConvention = importCall)]
-        public static extern void obs_output_set_mixers(obs_output_t output, UIntPtr mixers);
+        public static extern void obs_output_set_mixers(obs_output_t output, size_t mixers);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern video_t obs_output_video(obs_output_t output);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern audio_t obs_output_audio(obs_output_t output);
     }
 }
