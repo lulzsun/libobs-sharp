@@ -1,7 +1,7 @@
 # libobs.NET
 This is a C# wrapper for libobs. It's intention is to provide straightforward API for building around the libobs library, creating applications on the .NET platform.
 
-This library is currently built around .NET 5 and LibObs 27.5.32.
+This library is currently built around .NET 7 and OBS 30.0.0.
 
 ## Development Notes
 1. Currently supports only a very limited amount of features mainly for the purpose of recording/encoding. It is mainly built for the use of my personal project, [RePlays](https://github.com/lulzsun/RePlays).

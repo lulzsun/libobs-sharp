@@ -1,23 +1,30 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static obs_net.Obs;
 
 namespace obs_net.example {
 	class Program {
+		[DllImport("libX11", EntryPoint = "XOpenDisplay")]
+    	public static extern IntPtr XOpenDisplay(IntPtr display);
+
 		static void Main(string[] args) {
+			Directory.SetCurrentDirectory(Path.Combine(AppContext.BaseDirectory));
+
 			// STARTUP
 			if(obs_initialized()) {
 				throw new Exception("error: obs already initialized");
 			}
 
-			base_set_log_handler(new log_handler_t((lvl, msg, args, p) => {
-				using (va_list arglist = new va_list(args))
-				{
-					object[] objs = arglist.GetObjectsByFormat(msg);
-					string formattedMsg = Printf.sprintf(msg, objs);
+#if !WINDOWS
+			obs_set_nix_platform(obs_nix_platform_type.OBS_NIX_PLATFORM_X11_EGL);
+        	obs_set_nix_platform_display(XOpenDisplay(IntPtr.Zero));
+#endif
 
-					Console.WriteLine(((LogErrorLevel)lvl).ToString() + ": " + formattedMsg);
-				}
+			base_set_log_handler(new log_handler_t((lvl, msg, args, p) => {
+				string formattedMsg = MarshalUtils.GetLogMessage(msg, args);
+				Console.WriteLine(((LogErrorLevel)lvl).ToString() + ": " + formattedMsg);
 			}), IntPtr.Zero);
 
 			Console.WriteLine("libobs version: " + obs_get_version_string());
@@ -41,7 +48,11 @@ namespace obs_net.example {
 
 			obs_video_info ovi = new() {
 				adapter = 0,
+#if WINDOWS
 				graphics_module = "libobs-d3d11",
+#else
+				graphics_module = "libobs-opengl",
+#endif
 				fps_num = 60,
 				fps_den = 1,
 				base_width = (uint)MainWidth,
@@ -120,7 +131,7 @@ namespace obs_net.example {
 
 			// SAVE REPLAY BUFFER
 			Task.Run(async () => {
-                await Task.Delay(5000); // Delay for 5 seconds
+                await Task.Delay(5000); // Record for 5 seconds
                 calldata_t cd = new();	
                 var ph = obs_output_get_proc_handler(bufferOutput);
                 Console.WriteLine("buffer output successful save: " + proc_handler_call(ph, "save", cd));
