@@ -1,4 +1,4 @@
-# libobs.NET
+# libobs-sharp
 This is a C# wrapper for libobs. It's intention is to provide straightforward API for building around the libobs library, creating applications on the .NET platform.
 
 This library is currently built around .NET 7 and OBS 30.0.0.
@@ -27,7 +27,7 @@ If you are using the prebuilt version, this is what the file structure should (r
     - obs-plugins
 ```
 
-Using the `obs_net.example` project as an example, this is how the libobs files should be located under `Debug` folder in order for everything to work correctly when debugging.
+Using the `libobs-sharp.example` project as an example, this is how the libobs files should be located under `Debug` folder in order for everything to work correctly when debugging.
 
 ```
 - Debug
@@ -35,13 +35,14 @@ Using the `obs_net.example` project as an example, this is how the libobs files 
         - data
         - obs-plugins
         - obs.dll & ~dependencies/.dlls, etc. files~
-        - obs_net.example.exe
+        - libobs-sharp.example.exe
 ```
 
 ## TODO
 - abstraction 
 - type safety
 - gc / memory management
+- auto generating bindings
 
 ## Special thanks to
 [GoaLitiuM/libobs-sharp](https://github.com/GoaLitiuM/libobs-sharp) used some snippets and as reference

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace obs_net {
+namespace LibObs {
     class Helpers {
 
 

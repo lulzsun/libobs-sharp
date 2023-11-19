@@ -2,9 +2,9 @@
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static obs_net.Obs;
+using static LibObs.Obs;
 
-namespace obs_net.example {
+namespace LibObs.example {
 	class Program {
 		[DllImport("libX11", EntryPoint = "XOpenDisplay")]
     	public static extern IntPtr XOpenDisplay(IntPtr display);

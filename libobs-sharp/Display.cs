@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 
-namespace obs_net;
+namespace LibObs;
 
 public partial class Obs {
 

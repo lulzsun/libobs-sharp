@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace obs_net {
+namespace LibObs {
     using proc_handler_t = IntPtr;
 
     public partial class Obs {

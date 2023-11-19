@@ -3,11 +3,11 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>obs_net.example</RootNamespace>
+    <RootNamespace>libobs-sharp.example</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\obs_net\obs_net.csproj" />
+    <ProjectReference Include="..\libobs-sharp\libobs-sharp.csproj" />
   </ItemGroup>
 
 </Project>

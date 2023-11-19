@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "obs_net", "obs_net\obs_net.csproj", "{8CA38250-7107-4EBD-9009-EE57746DF934}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "libobs-sharp", "libobs-sharp\libobs-sharp.csproj", "{8CA38250-7107-4EBD-9009-EE57746DF934}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "obs_net.example", "obs_net.example\obs_net.example.csproj", "{D1381669-B5F9-49AE-835D-C58CEBAB20E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "libobs-sharp.example", "libobs-sharp.example\libobs-sharp.example.csproj", "{D1381669-B5F9-49AE-835D-C58CEBAB20E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8E85EA2D-0888-41DE-B2EC-16A9F9EBF16B}"
 EndProject

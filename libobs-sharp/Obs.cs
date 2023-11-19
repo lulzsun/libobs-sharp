@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace obs_net {
+namespace LibObs {
     using audio_t = IntPtr;
     using obs_source_t = IntPtr;
     using profiler_name_store_t = IntPtr;

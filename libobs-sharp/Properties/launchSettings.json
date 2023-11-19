@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "obs-net": {
+    "libobs-sharp": {
       "commandName": "Project"
     }
   }

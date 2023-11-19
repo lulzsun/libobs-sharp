@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace obs_net {
+namespace LibObs {
     public partial class Obs {
         public enum LogErrorLevel { error = 100, warning = 200, info = 300, debug = 400 };
 

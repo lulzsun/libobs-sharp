@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace obs_net {
+namespace LibObs {
     using obs_scene_t = IntPtr;
     using obs_sceneitem_t = IntPtr;
     using obs_source_t = IntPtr;

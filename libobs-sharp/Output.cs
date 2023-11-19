@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace obs_net {
+namespace LibObs {
     using audio_t = IntPtr;
     using obs_data_t = IntPtr;
     using obs_output_t = IntPtr;
