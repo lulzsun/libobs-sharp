@@ -4,7 +4,7 @@ git clone --recursive --depth 1 --branch 30.0.0 https://github.com/obsproject/ob
 cd obs-studio
 rm -rf build
 mkdir -p build && cd build
-cmake -DLINUX_PORTABLE=ON -DCMAKE_INSTALL_PREFIX="../../build" \
+cmake -DCMAKE_BUILD_TYPE=Release -DLINUX_PORTABLE=ON -DCMAKE_INSTALL_PREFIX="../../build" \
     -DENABLE_BROWSER=OFF \
     -DENABLE_VLC=OFF \
     -DENABLE_UI=OFF \

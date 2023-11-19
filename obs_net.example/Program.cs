@@ -33,8 +33,6 @@ namespace obs_net.example {
 			}
 			obs_add_data_path("./data/libobs/");
 			obs_add_module_path("./obs-plugins/64bit/", "./data/obs-plugins/%module%/");
-			obs_load_all_modules();
-			obs_log_loaded_modules();
 
 			obs_audio_info avi = new() {
 				samples_per_sec = 44100,
@@ -70,6 +68,8 @@ namespace obs_net.example {
 				throw new Exception("error on libobs reset video: " + ((VideoResetError)resetVideoCode).ToString());
 			}
 
+			obs_load_all_modules();
+			obs_log_loaded_modules();
 			obs_post_load_modules();
 
 			// SETUP NEW VIDEO SOURCE
