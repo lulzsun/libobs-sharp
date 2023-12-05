@@ -8,7 +8,7 @@ public partial class Obs {
 
     [DllImport(Obs.importLibrary, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
     //public static extern void obs_set_nix_platform([NativeTypeName("enum obs_nix_platform_type")] obs_nix_platform_type platform);
-    
+
     public static extern void obs_set_nix_platform(obs_nix_platform_type platform);
 
     [DllImport(Obs.importLibrary, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

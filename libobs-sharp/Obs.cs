@@ -5,6 +5,7 @@ namespace LibObs {
     using audio_t = IntPtr;
     using obs_source_t = IntPtr;
     using profiler_name_store_t = IntPtr;
+    using size_t = IntPtr;
     using video_t = IntPtr;
     public partial class Obs {
 
@@ -283,6 +284,12 @@ namespace LibObs {
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern float obs_source_get_volume(obs_source_t source);
 
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        [return: MarshalAs(UnmanagedType.I1)]
+        public static extern bool obs_enum_filter_types(size_t idx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8StringMarshaler))] ref string id);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_source_filter_add(obs_source_t source, obs_source_t filter);
 
         public enum VideoResetError {
             OBS_VIDEO_SUCCESS = 0,

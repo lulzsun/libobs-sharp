@@ -73,7 +73,7 @@ namespace LibObs {
 #endif
         }
 
-        static string UseStructurePointer<T>(T structure, Func<IntPtr, string> action) where T: notnull {
+        static string UseStructurePointer<T>(T structure, Func<IntPtr, string> action) where T : notnull {
             var structurePointer = IntPtr.Zero;
             try {
                 structurePointer = Marshal.AllocHGlobal(Marshal.SizeOf(structure));
