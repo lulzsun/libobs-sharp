@@ -64,7 +64,7 @@ namespace LibObs {
             var buffer = IntPtr.Zero;
             try {
                 buffer = Marshal.AllocHGlobal(byteLength);
-                Native.vsnprintf_windows(buffer, format, args);
+                Native.vsprintf_windows(buffer, format, args);
                 return buffer.FromUtf8()!;
             }
             finally {
