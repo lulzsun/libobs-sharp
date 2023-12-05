@@ -47,7 +47,7 @@ namespace LibObs.example {
             obs_video_info ovi = new() {
                 adapter = 0,
 #if WINDOWS
-				graphics_module = "libobs-d3d11",
+                graphics_module = "libobs-d3d11",
 #else
                 graphics_module = "libobs-opengl",
 #endif
