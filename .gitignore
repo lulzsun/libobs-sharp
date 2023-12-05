@@ -399,3 +399,5 @@ FodyWeavers.xsd
 
 obs-studio/
 build/
+libobs-sharp.test/Program.cs
+libobs-sharp.test/libobs-sharp.test.csproj
