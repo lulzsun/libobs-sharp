@@ -20,13 +20,13 @@ namespace LibObs.example {
 #if !WINDOWS
             obs_set_nix_platform(obs_nix_platform_type.OBS_NIX_PLATFORM_X11_EGL);
             obs_set_nix_platform_display(XOpenDisplay(IntPtr.Zero));
-#endif
-
+#else
+            // Not working on Linux. See: https://github.com/dotnet/runtime/issues/48796
             base_set_log_handler(new log_handler_t((lvl, msg, args, p) => {
                 string formattedMsg = MarshalUtils.GetLogMessage(msg, args);
                 Console.WriteLine(((LogErrorLevel)lvl).ToString() + ": " + formattedMsg);
             }), IntPtr.Zero);
-
+#endif
             Console.WriteLine("libobs version: " + obs_get_version_string());
             if (!obs_startup("en-US", null, IntPtr.Zero)) {
                 throw new Exception("error on libobs startup");
@@ -73,7 +73,11 @@ namespace LibObs.example {
             obs_post_load_modules();
 
             // SETUP NEW VIDEO SOURCE
-            IntPtr videoSource = obs_source_create("monitor_capture", "Monitor Capture Source", IntPtr.Zero, IntPtr.Zero);
+#if WINDOWS
+            IntPtr videoSource = obs_source_create("monitor_capture", "Screen Capture Source", IntPtr.Zero, IntPtr.Zero);
+#else
+            IntPtr videoSource = obs_source_create("xshm_input", "Screen Capture Source", IntPtr.Zero, IntPtr.Zero);
+#endif
             obs_set_output_source(0, videoSource); //0 = VIDEO CHANNEL
             // SETUP NEW VIDEO ENCODER
             IntPtr videoEncoderSettings = obs_data_create();
@@ -87,7 +91,14 @@ namespace LibObs.example {
             obs_data_release(videoEncoderSettings);
 
             // SETUP NEW AUDIO SOURCE
+#if WINDOWS
             IntPtr audioSource = obs_source_create("wasapi_output_capture", "Audio Capture Source", IntPtr.Zero, IntPtr.Zero);
+#else
+            IntPtr audioEncoderSettings = obs_data_create();
+            obs_data_set_string(audioEncoderSettings, "device_id", "default");
+            IntPtr audioSource = obs_source_create("pulse_output_capture", "Audio Capture Source", IntPtr.Zero, IntPtr.Zero);
+            obs_data_release(audioEncoderSettings);
+#endif
             obs_set_output_source(1, audioSource); //1 = AUDIO CHANNEL
             // SETUP NEW AUDIO ENCODER
             IntPtr audioEncoder = obs_audio_encoder_create("ffmpeg_aac", "simple_aac_recording", IntPtr.Zero, (UIntPtr)0, IntPtr.Zero);
