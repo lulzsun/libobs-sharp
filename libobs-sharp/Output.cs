@@ -45,6 +45,14 @@ namespace LibObs {
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_output_stop(obs_output_t output);
 
+        /// <summary>
+        /// <para>https://obsproject.com/docs/reference-outputs.html?highlight=obs_output_force_stop#c.obs_output_force_stop</para>
+        /// <para>Attempts to get the output to stop immediately without waiting for data to send.</para>
+        /// </summary>
+        /// <param name="output"></param>
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_output_force_stop(obs_output_t output);
+
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern signal_handler_t obs_output_get_signal_handler(obs_output_t output);
 
