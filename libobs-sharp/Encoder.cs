@@ -50,6 +50,9 @@ namespace LibObs {
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_encoder_set_audio(obs_encoder_t encoder, audio_t audio);
 
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern obs_encoder_t obs_encoder_get_ref(obs_encoder_t outpencoderut);
+
         /// <summary>
         /// <para>https://obsproject.com/docs/reference-encoders.html?highlight=obs_encoder_release#c.obs_encoder_release</para>
         /// <para>Releases a reference to an encoder. When the last reference is released, the encoder is destroyed.</para>

@@ -18,6 +18,9 @@ namespace LibObs {
             obs_data_t settings, obs_data_t hotkey_data);
 
         [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern obs_output_t obs_output_get_ref(obs_output_t output);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_output_release(obs_output_t output);
 
         [DllImport(importLibrary, CallingConvention = importCall)]
