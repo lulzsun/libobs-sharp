@@ -56,6 +56,14 @@ namespace LibObs {
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_output_force_stop(obs_output_t output);
 
+        /// <summary>
+        /// <para>https://docs.obsproject.com/reference-outputs#c.obs_output_end_data_capture</para>
+        /// <para>Ends data capture of an output. This is typically when the output actually intentionally deactivates (stops). Video/audio data will stop being sent to the callbacks of the output. The output will trigger the “stop” signal with the OBS_OUTPUT_SUCCESS code to indicate that the output has stopped successfully.</para>
+        /// </summary>
+        /// <param name="output"></param>
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_output_end_data_capture(obs_output_t output);
+
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern signal_handler_t obs_output_get_signal_handler(obs_output_t output);
 
