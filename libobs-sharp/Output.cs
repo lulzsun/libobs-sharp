@@ -111,5 +111,9 @@ namespace LibObs {
 
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern proc_handler_t obs_output_get_proc_handler(obs_output_t output);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8StringMarshaler))]
+        public static extern string obs_output_get_id(obs_output_t output);
     }
 }
