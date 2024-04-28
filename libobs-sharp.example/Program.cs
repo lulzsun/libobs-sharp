@@ -147,7 +147,7 @@ namespace LibObs.example {
                 var ph = obs_output_get_proc_handler(bufferOutput);
                 Console.WriteLine("buffer output successful save: " + proc_handler_call(ph, "save", cd));
             });
-            
+
             Console.WriteLine("Record Output id is " + obs_output_get_id(recordOutput));
             Console.WriteLine("Buffer Output id is " + obs_output_get_id(bufferOutput));
 
