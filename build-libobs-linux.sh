@@ -1,10 +1,14 @@
 rm -rf obs-studio
-git clone --recursive --depth 1 --branch 30.0.0 https://github.com/obsproject/obs-studio.git
+git clone --recursive --depth 1 --branch 30.1.1 https://github.com/obsproject/obs-studio.git
 
 cd obs-studio
+
+wget -nc ! https://gitlab.archlinux.org/archlinux/packaging/packages/obs-studio/-/raw/30.1.2-2/0001-obs-ffmpeg-Fix-incompatible-pointer-types-with-FFmpe.patch
+patch -Np1 < 0001-obs-ffmpeg-Fix-incompatible-pointer-types-with-FFmpe.patch
+
 rm -rf build
 mkdir -p build && cd build
-cmake -DCMAKE_BUILD_TYPE=Release \
+cmake -B build \
     -DCALM_DEPRECATION=ON \
     -DCMAKE_INSTALL_PREFIX="../../build" \
     -DLINUX_PORTABLE=ON \
@@ -17,5 +21,7 @@ cmake -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_WEBRTC=OFF \
     -DENABLE_VST=OFF \
     -DENABLE_AJA=OFF \
+    -Wno-dev \
     ..
-make -j4 && make install
+cmake --build build
+cmake --install build
