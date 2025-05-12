@@ -295,6 +295,9 @@ namespace LibObs {
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_source_filter_add(obs_source_t source, obs_source_t filter);
 
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_set_video_levels(float sdr_white_level, float hdr_nominal_peak_level);
+
         public enum VideoResetError {
             OBS_VIDEO_SUCCESS = 0,
             OBS_VIDEO_FAIL = -1,
