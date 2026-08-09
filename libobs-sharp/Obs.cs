@@ -99,6 +99,25 @@ namespace LibObs {
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_load_all_modules();
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct obs_module_info {
+            public IntPtr bin_path;
+            public IntPtr data_path;
+        }
+
+        [UnmanagedFunctionPointer(importCall)]
+        public delegate void obs_find_module_callback_t(IntPtr param, ref obs_module_info info);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_find_modules(obs_find_module_callback_t callback, IntPtr param);
+
+        [DllImport(importLibrary, CallingConvention = importCall, CharSet = CharSet.Ansi)]
+        public static extern int obs_open_module(out IntPtr module, string path, string data_path);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        [return: MarshalAs(UnmanagedType.I1)]
+        public static extern bool obs_init_module(IntPtr module);
+
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_post_load_modules();
 
